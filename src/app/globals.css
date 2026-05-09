@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap');
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #0066FF;
+  --secondary: #555555;
+  --accent: #00FFFF;
+  --card-bg: #111111;
+  --glow: rgba(0, 102, 255, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Outfit', 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: 100%;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Section 1: Hero Gradient Background */
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #001133 0%, #000000 70%);
+  z-index: -1;
+}
+
+.electric-blob {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(0, 102, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(80px);
+  z-index: -1;
+}
