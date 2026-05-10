@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&family=Syne:wght@400;700;800&display=swap');
 
 :root {
   --background: #000000;
@@ -16,12 +16,15 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   width: 100%;
-  height: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Outfit', 'Inter', sans-serif;
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -43,13 +46,76 @@ h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
-.glow-text {
-  text-shadow: 0 0 20px var(--glow);
+.hero-bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #020b18;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
+
+/* Irregular glowing blob behind text */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  width: 1220px;
+  height: 420px;
+  z-index: 1;
+
+  /* Strong blue glow */
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(0, 71, 255, 0.95) 0%,
+    rgba(0, 71, 255, 0.6) 35%,
+    rgba(0, 71, 255, 0.25) 60%,
+    transparent 80%
+  );
+
+  /* Organic shape */
+  border-radius: 42% 58% 63% 37% / 41% 32% 68% 59%;
+
+  /* Soft glow */
+  filter: blur(70px);
+
+  /* Gentle morphing animation */
+  animation: morphBlob 12s ease-in-out infinite alternate;
+}
+
+/* Morph between irregular shapes */
+@keyframes morphBlob {
+  0% {
+    border-radius: 42% 58% 63% 37% / 41% 32% 68% 59%;
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    border-radius: 55% 45% 38% 62% / 49% 60% 40% 51%;
+    transform: scale(1.05) rotate(3deg);
+  }
+
+  50% {
+    border-radius: 34% 66% 57% 43% / 61% 39% 61% 39%;
+    transform: scale(0.97) rotate(-4deg);
+  }
+
+  75% {
+    border-radius: 60% 40% 48% 52% / 35% 65% 35% 65%;
+    transform: scale(1.03) rotate(2deg);
+  }
+
+  100% {
+    border-radius: 42% 58% 63% 37% / 41% 32% 68% 59%;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -57,30 +123,86 @@ h1, h2, h3 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #222;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #444;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Section 1: Hero Gradient Background */
-.hero-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, #001133 0%, #000000 70%);
-  z-index: -1;
-}
-
 .electric-blob {
   position: absolute;
-  width: 600px;
-  height: 300px;
-  background: radial-gradient(ellipse at center, rgba(0, 102, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(80px);
+  filter: blur(100px);
   z-index: -1;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.skill-item {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, 10px) scale(0.98);
+  }
+  75% {
+    transform: translate(15px, 20px) scale(1.03);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* First blob movement */
+@keyframes blobFloat1 {
+  0% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translateY(-50%) translate(-30px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-50%) translate(20px, 25px) scale(0.95);
+  }
+  75% {
+    transform: translateY(-50%) translate(-15px, 10px) scale(1.03);
+  }
+  100% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+  }
+}
+
+/* Second blob movement */
+@keyframes blobFloat2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(25px, -15px) scale(1.04);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.96);
+  }
+  75% {
+    transform: translate(15px, 10px) scale(1.02);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
