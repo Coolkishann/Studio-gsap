@@ -40,7 +40,9 @@ section {
   overflow: hidden;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -66,13 +68,11 @@ h1, h2, h3 {
   z-index: 1;
 
   /* Strong blue glow */
-  background: radial-gradient(
-    circle at 30% 40%,
-    rgba(0, 71, 255, 0.95) 0%,
-    rgba(0, 71, 255, 0.6) 35%,
-    rgba(0, 71, 255, 0.25) 60%,
-    transparent 80%
-  );
+  background: radial-gradient(circle at 30% 40%,
+      rgba(0, 71, 255, 0.95) 0%,
+      rgba(0, 71, 255, 0.6) 35%,
+      rgba(0, 71, 255, 0.25) 60%,
+      transparent 80%);
 
   /* Organic shape */
   border-radius: 42% 58% 63% 37% / 41% 32% 68% 59%;
@@ -199,15 +199,19 @@ h1, h2, h3 {
   0% {
     transform: translate(0px, 0px) scale(1);
   }
+
   25% {
     transform: translate(20px, -15px) scale(1.05);
   }
+
   50% {
     transform: translate(-15px, 10px) scale(0.98);
   }
+
   75% {
     transform: translate(15px, 20px) scale(1.03);
   }
+
   100% {
     transform: translate(0px, 0px) scale(1);
   }
@@ -218,15 +222,19 @@ h1, h2, h3 {
   0% {
     transform: translateY(-50%) translate(0, 0) scale(1);
   }
+
   25% {
     transform: translateY(-50%) translate(-30px, -20px) scale(1.05);
   }
+
   50% {
     transform: translateY(-50%) translate(20px, 25px) scale(0.95);
   }
+
   75% {
     transform: translateY(-50%) translate(-15px, 10px) scale(1.03);
   }
+
   100% {
     transform: translateY(-50%) translate(0, 0) scale(1);
   }
@@ -237,15 +245,19 @@ h1, h2, h3 {
   0% {
     transform: translate(0, 0) scale(1);
   }
+
   25% {
     transform: translate(25px, -15px) scale(1.04);
   }
+
   50% {
     transform: translate(-20px, 20px) scale(0.96);
   }
+
   75% {
     transform: translate(15px, 10px) scale(1.02);
   }
+
   100% {
     transform: translate(0, 0) scale(1);
   }
@@ -290,10 +302,11 @@ h1, h2, h3 {
     gap: 4rem;
     padding-bottom: 5rem;
   }
-  
+
   .education-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+
   }
 
   .skills-container {
@@ -343,7 +356,7 @@ h1, h2, h3 {
     font-size: 1.2rem !important;
     left: 15% !important;
   }
-  
+
   .hero-sub {
     font-size: 0.7rem !important;
     letter-spacing: 0.15em !important;

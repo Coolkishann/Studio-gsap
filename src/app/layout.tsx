@@ -13,8 +13,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "M. Abdullah | Creative Video Editor Portfolio",
-  description: "Portfolio of M. Abdullah, a creative video editor and visual content creator with 4+ years of experience.",
+  title: "M. Kishan | Creative Video Editor Portfolio",
+  description: "Portfolio of M. Kishan, a creative video editor and visual content creator with 4+ years of experience.",
 };
 
 export default function RootLayout({

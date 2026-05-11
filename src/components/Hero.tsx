@@ -87,9 +87,9 @@ export default function Hero() {
         }}>
           Kishan
           
-          <span className="studio-tag">
+          {/* <span className="studio-tag">
             STUDIO
-          </span>
+          </span> */}
         </h1>
 
         <div className="hero-tag-container" style={{

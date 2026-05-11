@@ -17,7 +17,7 @@ const originalSkills = [
 ];
 
 // Create a larger list by repeating to ensure enough items for a tight circle
-const skills = Array.from({ length: 35 }, (_, i) => originalSkills[i % originalSkills.length]);
+const skills = Array.from({ length: 20 }, (_, i) => originalSkills[i % originalSkills.length]);
 
 export default function Skills() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,6 @@ export default function Skills() {
   const blob2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 1024;
     const ctx = gsap.context(() => {
       // Blobs animation
       [blob1Ref, blob2Ref].forEach((ref, i) => {
@@ -44,7 +43,7 @@ export default function Skills() {
       });
 
       const items = gsap.utils.toArray(".skill-item") as HTMLElement[];
-      const radius = isMobile ? window.innerWidth * 0.8 : 1100; // Responsive radius
+      const radius = 1100; // Increased radius for smoother curve
       const angleStep = (Math.PI * 2) / items.length;
 
       items.forEach((item: any, i: number) => {
@@ -111,8 +110,7 @@ export default function Skills() {
 
       // 1. Reveal from right side
       mainTl.from([".skills-heading", ".skill-name-container", circleRef.current], {
-        x: isMobile ? 0 : 1500,
-        y: isMobile ? 100 : 0,
+        x: 1500,
         opacity: 0,
         duration: 2,
         stagger: 0.2,
@@ -128,8 +126,7 @@ export default function Skills() {
 
       // 3. Exit back to right side
       mainTl.to([".skills-heading", ".skill-name-container", circleRef.current], {
-        x: isMobile ? 0 : 1500,
-        y: isMobile ? -100 : 0,
+        x: 1500,
         opacity: 0,
         duration: 2,
         stagger: 0.1,
@@ -145,124 +142,126 @@ export default function Skills() {
 
   return (
     <>
-    
-    <section ref={containerRef} className="skills-section skills-container" style={{
-      background: '#000',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Moving Gradient Blobs */}
-<div
-  ref={blob1Ref}
-  className="electric-blob"
-  style={{
-    width: "800px",
-    height: "800px",
-    background: "rgba(0, 85, 255, 0.7)",
-    top: "50%",
-    right: "-20%",
-    transform: "translateY(-50%)",
-    animation: "blobFloat1 12s ease-in-out infinite",
-    willChange: "transform",
-  }}
-/>
 
-<div
-  ref={blob2Ref}
-  className="electric-blob"
-  style={{
-    width: "600px",
-    height: "600px",
-    background: "rgba(0, 102, 255, 0.58)",
-    top: "20%",
-    right: "10%",
-    animation: "blobFloat2 10s ease-in-out infinite",
-    willChange: "transform",
-  }}
-/>
-
-      <div className="skills-heading">
-        <h3 style={{ 
-          fontSize: "clamp(0.7rem, 2vw, 0.85rem)", 
-          fontWeight: 700, 
-          letterSpacing: "0.15em", 
-          marginBottom: "1.2rem", 
-          color: "#fff",
-          opacity: 0.6
-        }}>
-          CAPABILITIES
-        </h3>
-        <h2 style={{ 
-          fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', 
-          lineHeight: '0.9', 
-          fontWeight: 900, 
-          letterSpacing: '-0.03em',
-          textTransform: 'uppercase'
-        }}>
-          SOFTWARE<br />SKILLS
-        </h2>
-      </div>
-
-      {/* Current Skill Name - Centered between heading and circle */}
-      <div className="skill-name-container" style={{
-        zIndex: 10,
-        flex: 1,
+      <section ref={containerRef} className="skills-section" style={{
+        background: '#000',
         display: 'flex',
-        justifyContent: 'center',
-        paddingRight: '12vw' // Offset to move away from circle
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: '0 8vw',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div ref={skillNameRef} style={{
-          fontSize: '1.5rem', // Smaller text to match reference
-          color: '#fff',
-          opacity: 1,
-          fontWeight: 500,
-          textAlign: 'center',
-          letterSpacing: '0.02em',
-          willChange: 'transform, opacity'
-        }}>
-          Premiere Pro
-        </div>
-      </div>
+        {/* Moving Gradient Blobs */}
+        <div
+          ref={blob1Ref}
+          className="electric-blob"
+          style={{
+            width: "800px",
+            height: "800px",
+            background: "rgba(0, 85, 255, 0.7)",
+            top: "50%",
+            right: "-20%",
+            transform: "translateY(-50%)",
+            animation: "blobFloat1 12s ease-in-out infinite",
+            willChange: "transform",
+          }}
+        />
 
-      {/* Rotating Skill Icons Circle */}
-      <div ref={circleRef} className="skills-circle" style={{
-        position: 'absolute',
-        right: 'calc(50% - 1150px)', // Centered offset for large screens
-        top: '50%',
-        width: '100px',
-        height: '100px',
-        marginTop: '-50px',
-        borderRadius: '50%',
-        zIndex: 5,
-        willChange: 'transform',
-        transformOrigin: 'center center'
-      }}>
-        {skills.map((skill, i) => (
-          <div key={i} className="skill-item" style={{
-            position: 'absolute',
-            width: 'clamp(80px, 18vw, 200px)', // Slightly smaller icons
-            height: 'clamp(80px, 18vw, 200px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            userSelect: 'none'
+        <div
+          ref={blob2Ref}
+          className="electric-blob"
+          style={{
+            width: "600px",
+            height: "600px",
+            background: "rgba(0, 102, 255, 0.58)",
+            top: "20%",
+            right: "10%",
+            animation: "blobFloat2 10s ease-in-out infinite",
+            willChange: "transform",
+          }}
+        />
+
+        <div className="skills-heading" style={{ zIndex: 10, width: '35%' }}>
+          <h3 style={{
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            letterSpacing: "0.15em",
+            marginBottom: "1.2rem",
+            color: "#fff",
+            opacity: 0.6
           }}>
-            <img 
-              src={skill.icon} 
-              alt="" 
-              style={{ 
-                width: '100%', 
-                height: '100%', 
-                rotate: '90deg',
-                objectFit: 'contain'
-              }} 
-            />
+            CAPABILITIES
+          </h3>
+          <h2 style={{
+            fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+            lineHeight: '0.9',
+            fontWeight: 900,
+            letterSpacing: '-0.03em',
+            textTransform: 'uppercase'
+          }}>
+            SOFTWARE<br />SKILLS
+          </h2>
+        </div>
+
+        {/* Current Skill Name - Centered between heading and circle */}
+        <div className="skill-name-container" style={{
+          zIndex: 10,
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          paddingRight: '12vw' // Offset to move away from circle
+        }}>
+          <div ref={skillNameRef} style={{
+            fontSize: '1.5rem', // Smaller text to match reference
+            color: '#fff',
+            opacity: 1,
+            fontWeight: 500,
+            textAlign: 'center',
+            letterSpacing: '0.02em',
+            willChange: 'transform, opacity'
+          }}>
+            Premiere Pro
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+
+        {/* Rotating Skill Icons Circle */}
+        <div ref={circleRef} style={{
+          position: 'absolute',
+          right: '-850px', // Shifted right to fit the larger radius
+          top: '50%',
+          width: '100px',
+          height: '100px',
+          marginTop: '-50px',
+          borderRadius: '50%',
+          zIndex: 5,
+          willChange: 'transform'
+        }}>
+          {skills.map((skill, i) => (
+            <div key={i} className="skill-item" style={{
+              position: 'absolute',
+              width: '200px', // Larger icons as in reference
+              height: '200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              userSelect: 'none'
+            }}>
+              <img
+                src={skill.icon}
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  rotate: '90deg',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
-

@@ -89,7 +89,7 @@ export default function About() {
               marginBottom: "0.8rem",
               letterSpacing: "-0.02em"
             }}>
-              M.Abdullah
+              M.Kishan
             </h1>
             <p style={{ fontSize: "clamp(0.7rem, 2vw, 0.85rem)", opacity: 0.8, letterSpacing: "0.1em", fontWeight: 600, color: "#0055ff" }}>
               Video Editor | Videographer | Content Creator
@@ -99,15 +99,15 @@ export default function About() {
           {/* Portrait Image */}
           <div className="person-image reveal" style={{
             position: "absolute",
-            bottom: "0",
-            left: "10%",
-            width: "80%",
-            height: "80%",
+            // bottom: "-20%",
+            left: "-10%",
+            width: "120%",
+            height: "120%",
             zIndex: 5
           }}>
             <Image
               src="/assets/hero1.png"
-              alt="M. Abdullah"
+              alt="M. Kishan"
               fill
               style={{
                 objectFit: "contain",
@@ -196,15 +196,6 @@ export default function About() {
                 </ul>
               </div>
 
-              {/* Exp 3 */}
-              <div>
-                <p style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.5rem", color: "#0055ff" }}>2025 - 2026</p>
-                <p style={{ fontSize: "1.1rem", opacity: 1, marginBottom: "0.6rem", fontWeight: 600 }}>Studio Media Production Specialist</p>
-                <ul style={{ fontSize: "1rem", opacity: 0.7, paddingLeft: "1.2rem", lineHeight: 1.6 }}>
-                  <li>Managed end-to-end media production (video, photo, audio, editing)</li>
-                  <li>Created storytelling-driven content from concept to final delivery</li>
-                </ul>
-              </div>
 
             </div>
           </div>
