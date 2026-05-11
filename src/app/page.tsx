@@ -8,6 +8,8 @@ import Skills from "@/components/Skills";
 import Grading from "@/components/Grading";
 import VideoPostProduction from "@/components/youtube";
 
+import Footer from "@/components/Footer";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
@@ -48,71 +50,7 @@ export default function Home() {
         <VideoPostProduction />
       </div>
 
-      {/* Footer / Contact */}
-      {/* <section
-        style={{
-          height: "50vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#000",
-          borderTop: "1px solid #111",
-          position: "relative",
-          zIndex: 5,
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "3rem",
-            color: "var(--primary)",
-            marginBottom: "20px",
-          }}
-        >
-          LET&apos;S CONNECT
-        </h2>
-
-        <p style={{ opacity: 0.6 }}>kishan@example.com</p>
-
-        <div
-          style={{
-            marginTop: "40px",
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <a
-            href="#"
-            style={{
-              opacity: 0.8,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-            }}
-          >
-            Instagram
-          </a>
-          <a
-            href="#"
-            style={{
-              opacity: 0.8,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-            }}
-          >
-            YouTube
-          </a>
-          <a
-            href="#"
-            style={{
-              opacity: 0.8,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-            }}
-          >
-            LinkedIn
-          </a>
-        </div>
-      </section> */}
+      <Footer />
     </main>
   );
 }

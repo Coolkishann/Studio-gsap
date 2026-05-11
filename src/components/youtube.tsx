@@ -15,7 +15,7 @@ const slides = [
   },
   {
     type: "search",
-    text: "abdul Studio.",
+    text: "Kishan Visual Editing Studio",
   },
   {
     type: "text",
