@@ -51,19 +51,9 @@ export default function About() {
         overflow: "hidden"
       }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.2fr",
-          gap: "8vw",
-          width: "100%",
-          maxWidth: "1300px",
-          alignItems: "start",
-          zIndex: 10
-        }}
-      >
+      <div className="about-grid">
         {/* LEFT SIDE: Portrait and Intro */}
-        <div style={{ position: "relative", width: "100%", aspectRatio: "1/1" }}>
+        <div className="about-portrait-wrapper" style={{ position: "relative", width: "100%", aspectRatio: "1/1" }}>
           {/* Blue Glow Background */}
           <div
             className="blue-glow"
@@ -88,11 +78,12 @@ export default function About() {
             position: "absolute",
             top: "5%",
             left: "5%",
-            zIndex: 10
+            zIndex: 10,
+            width: "90%"
           }}>
-            <p style={{ fontSize: "1rem", opacity: 0.9, marginBottom: "0.2rem", fontWeight: 500 }}>Hello, I am</p>
+            <p style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", opacity: 0.9, marginBottom: "0.2rem", fontWeight: 500 }}>Hello, I am</p>
             <h1 style={{
-              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+              fontSize: "clamp(2.5rem, 10vw, 4.5rem)",
               fontWeight: 900,
               lineHeight: 1,
               marginBottom: "0.8rem",
@@ -100,7 +91,7 @@ export default function About() {
             }}>
               M.Abdullah
             </h1>
-            <p style={{ fontSize: "0.9rem", opacity: 0.8, letterSpacing: "0.1em", fontWeight: 600, color: "#0055ff" }}>
+            <p style={{ fontSize: "clamp(0.7rem, 2vw, 0.85rem)", opacity: 0.8, letterSpacing: "0.1em", fontWeight: 600, color: "#0055ff" }}>
               Video Editor | Videographer | Content Creator
             </p>
           </div>
@@ -127,7 +118,7 @@ export default function About() {
         </div>
 
         {/* RIGHT SIDE: Content Sections */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "5rem", marginTop: "2rem" }}>
+        <div className="about-content-stack">
 
           {/* ABOUT ME Section */}
           <div className="reveal">
@@ -142,10 +133,10 @@ export default function About() {
               ABOUT ME
             </h3>
             <p style={{
-              fontSize: "1.15rem",
+              fontSize: "1.1rem",
               lineHeight: 1.8,
               color: "rgba(255,255,255,0.9)",
-              textAlign: "justify",
+              textAlign: "left",
               maxWidth: "600px",
               fontWeight: 400
             }}>
@@ -154,11 +145,7 @@ export default function About() {
           </div>
 
           {/* Inner Grid for Education and Experience */}
-          <div className="reveal" style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.5fr",
-            gap: "4rem"
-          }}>
+          <div className="reveal education-grid">
 
             {/* EDUCATION */}
             <div>

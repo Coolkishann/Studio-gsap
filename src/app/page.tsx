@@ -23,23 +23,7 @@ export default function Home() {
   return (
     <main style={{ background: "#000", position: "relative" }}>
       {/* Fixed Name - Bottom Left */}
-      <div
-        style={{
-          position: "fixed",
-          left: "30px",
-          bottom: "24px",
-          zIndex: 9999,
-          color: "#ffffff",
-          fontSize: "14px",
-          fontWeight: 500,
-          lineHeight: 1.4,
-          letterSpacing: "0.05em",
-          textTransform: "uppercase",
-          opacity: 0.85,
-          pointerEvents: "none", // prevents blocking clicks
-          userSelect: "none",
-        }}
-      >
+      <div className="branding-fixed">
         M. Kishan
         <br />
         Video Editor & Director

@@ -28,6 +28,7 @@ export default function Skills() {
   const blob2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 1024;
     const ctx = gsap.context(() => {
       // Blobs animation
       [blob1Ref, blob2Ref].forEach((ref, i) => {
@@ -43,7 +44,7 @@ export default function Skills() {
       });
 
       const items = gsap.utils.toArray(".skill-item") as HTMLElement[];
-      const radius = 1100; // Increased radius for smoother curve
+      const radius = isMobile ? window.innerWidth * 0.8 : 1100; // Responsive radius
       const angleStep = (Math.PI * 2) / items.length;
 
       items.forEach((item: any, i: number) => {
@@ -110,7 +111,8 @@ export default function Skills() {
 
       // 1. Reveal from right side
       mainTl.from([".skills-heading", ".skill-name-container", circleRef.current], {
-        x: 1500,
+        x: isMobile ? 0 : 1500,
+        y: isMobile ? 100 : 0,
         opacity: 0,
         duration: 2,
         stagger: 0.2,
@@ -126,7 +128,8 @@ export default function Skills() {
 
       // 3. Exit back to right side
       mainTl.to([".skills-heading", ".skill-name-container", circleRef.current], {
-        x: 1500,
+        x: isMobile ? 0 : 1500,
+        y: isMobile ? -100 : 0,
         opacity: 0,
         duration: 2,
         stagger: 0.1,
@@ -143,12 +146,8 @@ export default function Skills() {
   return (
     <>
     
-    <section ref={containerRef} className="skills-section" style={{
+    <section ref={containerRef} className="skills-section skills-container" style={{
       background: '#000',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      padding: '0 8vw',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -182,9 +181,9 @@ export default function Skills() {
   }}
 />
 
-      <div className="skills-heading" style={{ zIndex: 10, width: '35%' }}>
+      <div className="skills-heading">
         <h3 style={{ 
-          fontSize: "0.85rem", 
+          fontSize: "clamp(0.7rem, 2vw, 0.85rem)", 
           fontWeight: 700, 
           letterSpacing: "0.15em", 
           marginBottom: "1.2rem", 
@@ -194,7 +193,7 @@ export default function Skills() {
           CAPABILITIES
         </h3>
         <h2 style={{ 
-          fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+          fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', 
           lineHeight: '0.9', 
           fontWeight: 900, 
           letterSpacing: '-0.03em',
@@ -226,22 +225,23 @@ export default function Skills() {
       </div>
 
       {/* Rotating Skill Icons Circle */}
-      <div ref={circleRef} style={{
+      <div ref={circleRef} className="skills-circle" style={{
         position: 'absolute',
-        right: '-750px', // Shifted right to fit the larger radius
+        right: 'calc(50% - 1150px)', // Centered offset for large screens
         top: '50%',
         width: '100px',
         height: '100px',
         marginTop: '-50px',
         borderRadius: '50%',
         zIndex: 5,
-        willChange: 'transform'
+        willChange: 'transform',
+        transformOrigin: 'center center'
       }}>
         {skills.map((skill, i) => (
           <div key={i} className="skill-item" style={{
             position: 'absolute',
-            width: '200px', // Larger icons as in reference
-            height: '200px',
+            width: 'clamp(80px, 18vw, 200px)', // Slightly smaller icons
+            height: 'clamp(80px, 18vw, 200px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

@@ -69,7 +69,7 @@ export default function Hero() {
           Directing & Editing
         </h3>
         <h1 ref={textRef} className="glow-text" style={{
-          fontSize: 'clamp(5rem, 35vw, 55vh)',
+          fontSize: 'clamp(4rem, 25vw, 55vh)',
           lineHeight: 0.85,
           fontWeight: 400,
           fontFamily: "'Bebas Neue', sans-serif",
@@ -87,22 +87,12 @@ export default function Hero() {
         }}>
           Kishan
           
-          <span className="studio-tag" style={{
-            position: 'absolute',
-            left: '21%',
-            bottom: '0%',
-            fontSize: 'clamp(1rem, 4vw, 5rem)',
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 800,
-            letterSpacing: '0.1em',
-            color: '#0066FF',
-            textShadow: '0 0 20px rgba(0, 102, 255, 0.4)'
-          }}>
+          <span className="studio-tag">
             STUDIO
           </span>
         </h1>
 
-        <div style={{
+        <div className="hero-tag-container" style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '40px',
