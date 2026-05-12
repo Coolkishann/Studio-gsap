@@ -3,11 +3,26 @@ import './Footer.css';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer-container">
-      <div className="footer-background">
+    <footer className="footer-container" >
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          background: `
+          radial-gradient(circle at 85% 85%, rgba(0,80,255,0.35), transparent 30%),
+            radial-gradient(circle at 15% 15%, rgba(0,80,255,0.25), transparent 35%),
+            radial-gradient(circle at center, rgba(0,20,120,0.15), transparent 55%)
+          `,
+          // borderRadius: "1rem",
+          // boxShadow: "inset 0 0 40px rgba(0,100,255,0.5)"
+        }}
+      >
+        <div className="footer-glow"></div>
       </div>
-
-      <div className="footer-glow"></div>
 
       {/* Top Section */}
       <div className="footer-top">

@@ -1,24 +1,28 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const subTextRef = useRef<HTMLHeadingElement>(null);
+  const tagsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Entrance Animations
       const tl = gsap.timeline({ delay: 0.5 });
 
-      // 1. "Directing & Editing" comes from above
-      tl.from(".hero-sub", {
+      tl.from(subTextRef.current, {
         y: -30,
         opacity: 0,
         duration: 1,
         ease: "power3.out"
       });
 
-      // 2. "Kishan" comes from left
       tl.from(textRef.current, {
         x: -150,
         opacity: 0,
@@ -27,15 +31,6 @@ export default function Hero() {
         ease: "expo.out"
       }, "-=0.7");
 
-      // 3. "STUDIO" comes from right
-      tl.from(".studio-tag", {
-        x: 150,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out"
-      }, "-=1.2");
-
-      // 4. Bottom tags come from down (like About section)
       tl.from(".hero-tag", {
         y: 40,
         opacity: 0,
@@ -43,6 +38,43 @@ export default function Hero() {
         stagger: 0.2,
         ease: "power2.out"
       }, "-=0.5");
+
+      // Parallax Animations on Scroll
+      gsap.to(subTextRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: -50,
+        opacity: 0,
+        ease: "none"
+      });
+
+      gsap.to(textRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: -150,
+        scale: 0.9,
+        ease: "none"
+      });
+
+      gsap.to(tagsRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: -80,
+        opacity: 0.3,
+        ease: "none"
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -57,7 +89,7 @@ export default function Hero() {
       background: '#000',
     }}>
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        <h3 className="hero-sub" style={{ 
+        <h3 ref={subTextRef} className="hero-sub" style={{ 
           fontSize: "0.85rem", 
           fontWeight: 700, 
           letterSpacing: "0.25em", 
@@ -92,7 +124,7 @@ export default function Hero() {
           </span> */}
         </h1>
 
-        <div className="hero-tag-container" style={{
+        <div ref={tagsRef} className="hero-tag-container" style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '40px',

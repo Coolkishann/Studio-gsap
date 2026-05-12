@@ -167,7 +167,7 @@ export default function LayeredScrollShowcase() {
         height: "100vh",
         position: "relative",
         overflow: "hidden",
-        background: "#fff", // Start with white
+        // background: "#fff", // Start with white
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

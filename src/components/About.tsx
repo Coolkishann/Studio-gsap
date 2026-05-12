@@ -3,9 +3,16 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const introTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -30,6 +37,59 @@ export default function About() {
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut"
+      });
+
+      // Parallax effect for the image
+      gsap.to(imageRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+        y: -100,
+        xPercent: -50,
+        scale: 1.05,
+        ease: "none"
+      });
+
+      // Parallax effect for the glow
+      gsap.to(glowRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 2,
+        },
+        y: 150,
+        xPercent: -50,
+        scale: 1.2,
+        opacity: 0.4,
+        ease: "none"
+      });
+
+      // Parallax effect for the text content
+      gsap.to(contentRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.5,
+        },
+        y: -60,
+        ease: "none"
+      });
+
+      // Parallax effect for the intro text (left side)
+      gsap.to(introTextRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+        y: -120,
+        ease: "none"
       });
     }, sectionRef);
 
@@ -56,15 +116,17 @@ export default function About() {
         <div className="about-portrait-wrapper" style={{ position: "relative", width: "100%", aspectRatio: "1/1" }}>
           {/* Blue Glow Background */}
           <div
+            ref={glowRef}
             className="blue-glow"
             style={{
               position: "absolute",
               width: "100%",
               height: "100%",
-              top: "10%",
-              left: "0",
+              // top: "10%",
+              // left: "50%",
+              transform: "translateX(-50%)",
               background:
-                "radial-gradient(circle, rgba(0,85,255,0.7) 0%, rgba(0,50,150,0.3) 40%, transparent 70%)",
+                "radial-gradient(circle, rgba(0, 85, 255, 1) 0%, rgba(0, 50, 150, 0.89) 40%, transparent 70%)",
               filter: "blur(60px)",
               zIndex: 1,
               borderRadius: "50%",
@@ -74,7 +136,7 @@ export default function About() {
           />
 
           {/* Intro Text Overlay */}
-          <div className="reveal" style={{
+          <div ref={introTextRef} className="reveal" style={{
             position: "absolute",
             top: "5%",
             left: "5%",
@@ -97,16 +159,17 @@ export default function About() {
           </div>
 
           {/* Portrait Image */}
-          <div className="person-image reveal" style={{
+          <div ref={imageRef} className="person-image reveal" style={{
             position: "absolute",
-            // bottom: "-20%",
-            left: "-10%",
-            width: "120%",
-            height: "120%",
+            bottom: "-15%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "100%",
+            height: "100%",
             zIndex: 5
           }}>
             <Image
-              src="/assets/hero1.png"
+              src="/assets/hero-portrait1.png"
               alt="M. Kishan"
               fill
               style={{
@@ -118,7 +181,7 @@ export default function About() {
         </div>
 
         {/* RIGHT SIDE: Content Sections */}
-        <div className="about-content-stack">
+        <div ref={contentRef} className="about-content-stack">
 
           {/* ABOUT ME Section */}
           <div className="reveal">
